@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+=============
+
+## AppRouter のディレクトリ構成
+Next.js13から導入
+
+
+layout	  Segment とその子コンポーネントで共有する UI
+page	    ルートのユニークな UI を作成し、ルートを公開する
+loading	  Segment とその子コンポーネントのローディング UI
+not-found	Segment とその子コンポーネントが無かった場合の UI
+error	    Segment とその子コンポーネントのエラー UI
+global-error	グローバルなエラー UI
+route	     サーバーサイドの API エンドポイント
+template	 再レンダリングされる特殊なレイアウト UI
+default	   Parallel Routes のフォールバック UI
