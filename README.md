@@ -50,3 +50,6 @@ global-error	グローバルなエラー UI
 route	     サーバーサイドの API エンドポイント
 template	 再レンダリングされる特殊なレイアウト UI
 default	   Parallel Routes のフォールバック UI
+
+・layout
+layout.tsxをつくればimportせずとも適用される
