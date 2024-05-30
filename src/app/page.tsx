@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Link
         className={isActive ? "text-red" : "text-blue"}
-        href={dashboardLink}
+        href={`${dashboardLink}#settings`}
       >
         Dashboard
       </Link>

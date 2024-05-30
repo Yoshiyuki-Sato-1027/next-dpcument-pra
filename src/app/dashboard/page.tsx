@@ -8,7 +8,14 @@ const Page = () => {
   const pathname = usePathname();
   const isActive = pathname.startsWith(dashboardLink);
   console.log("isActive", isActive);
-  return <div>page</div>;
+  return (
+    <div className="h-full">
+      <div className="h-full">DashBoard</div>
+      <div id="settings" className="text-white">
+        Setting
+      </div>
+    </div>
+  );
 };
 
 export default Page;
