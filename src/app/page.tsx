@@ -1,8 +1,10 @@
 "use client";
 
+import axios from "axios";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const dashboardLink = "/dashboard";
@@ -27,8 +29,30 @@ export default function Home() {
     window.history.replaceState(null, "", newPath);
   };
 
+  const [data, setData] = useState<
+    | {
+        userId: number;
+        id: number;
+        title: string;
+        completed: boolean;
+      }
+    | undefined
+  >(undefined);
+
+  useEffect(() => {
+    (async () => {
+      const data = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos/1"
+      );
+      setData(data.data);
+    })();
+  }, []);
+
+  console.log("data", data);
+
   return (
     <>
+      <p>{data?.userId}</p>
       <Link
         className={isActive ? "text-red" : "text-blue"}
         href={`${dashboardLink}#settings`}
