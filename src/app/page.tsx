@@ -13,6 +13,7 @@ export default function Home() {
       <Link
         className={isActive ? "text-red" : "text-blue"}
         href={`${dashboardLink}#settings`}
+        scroll={false}
       >
         Dashboard
       </Link>
