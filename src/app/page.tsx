@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -10,6 +10,23 @@ export default function Home() {
   const isActive = pathname.startsWith(dashboardLink);
   console.log("isActive", isActive);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // URLに値を追加する
+  const updateSorting = (sortOrder: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("sort", sortOrder);
+    // こっちはまえのじょうたいにもどれる
+    window.history.pushState(null, "", `?${params.toString()}`);
+  };
+
+  // URLに値を追加する
+  const switchLocale = (locale: string) => {
+    const newPath = `/${locale}${pathname}`;
+    // こっちはまえのじょうたいにもどれない
+    window.history.replaceState(null, "", newPath);
+  };
+
   return (
     <>
       <Link
@@ -22,6 +39,10 @@ export default function Home() {
       <button type="button" onClick={() => router.push("/dashboard")}>
         RouterのDashboard
       </button>
+      <button onClick={() => updateSorting("asc")}>Sort Ascending</button>
+      <button onClick={() => updateSorting("desc")}>Sort Descending</button>
+      <button onClick={() => switchLocale("en")}>English</button>
+      <button onClick={() => switchLocale("fr")}>French</button>
     </>
   );
 }
