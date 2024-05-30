@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const dashboardLink = "/dashboard";
   const pathname = usePathname(); // 現在地の/を判定する
   const isActive = pathname.startsWith(dashboardLink);
   console.log("isActive", isActive);
+  const router = useRouter();
   return (
     <>
       <Link
@@ -17,6 +19,9 @@ export default function Home() {
       >
         Dashboard
       </Link>
+      <button type="button" onClick={() => router.push("/dashboard")}>
+        RouterのDashboard
+      </button>
     </>
   );
 }
