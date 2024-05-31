@@ -53,3 +53,7 @@ default	   Parallel Routes のフォールバック UI
 
 ・layout
 layout.tsxをつくればimportせずとも適用される
+
+参考になった
+Next.jsにTabstackQuery導入
+https://qiita.com/75ks/items/d5d5bfe21a3e8bb964ae
