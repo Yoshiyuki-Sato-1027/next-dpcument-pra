@@ -5,6 +5,8 @@ import axios from "axios";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function Home() {
   const dashboardLink = "/dashboard";
@@ -39,7 +41,9 @@ export default function Home() {
 
   return (
     <>
-      <p>{data?.data?.userId ?? ""}</p>
+      <Suspense fallback={<Loading />}>
+        <p>{data?.data?.userId ?? ""}</p>
+      </Suspense>
       <Link
         className={isActive ? "text-red" : "text-blue"}
         href={`${dashboardLink}#settings`}
