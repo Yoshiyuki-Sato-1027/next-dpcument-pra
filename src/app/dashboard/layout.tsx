@@ -1,12 +1,7 @@
-import React, { Suspense } from "react";
-import Loading from "../loading";
+import React from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Suspense fallback={<Loading />}>
-      <div className="h-screen">{children}</div>
-    </Suspense>
-  );
+  return <div className="h-screen">{children}</div>;
 };
 
 export default DashboardLayout;
