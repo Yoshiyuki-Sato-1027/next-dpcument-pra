@@ -7,7 +7,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const dashboardLink = "/dashboard";
