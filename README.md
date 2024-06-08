@@ -21,3 +21,7 @@ layout.tsx をつくれば import せずとも適用される
 参考になった
 Next.js に TabstackQuery 導入
 https://qiita.com/75ks/items/d5d5bfe21a3e8bb964ae
+
+Intercepting Routes を使用してモーダルをつくっている公式のリポジトリ
+https://github.com/vercel/nextgram
+別リポジトリで確認
