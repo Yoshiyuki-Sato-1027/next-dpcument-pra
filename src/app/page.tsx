@@ -47,35 +47,28 @@ export default function Home() {
   const result: Result = { type: "ok", data: { type: "text", content: "aa" } };
 
   // ts-patternでjsxを表示する
-  const html = match(result)
+  const html = match(isLoading)
     // .with({ type: "error" }, () => <p>Oups! An error occured</p>)
-    .with({ type: "ok", data: { type: "text" } }, (res) => (
-      <p>{res.data.content}</p>
-    ))
-    .with({ type: "ok", data: { type: "img", src: P.select() } }, (src) => (
-      <img src={src} />
+    .with(true, () => <Loading />)
+    .with(false, () => (
+      <>
+        <Link
+          className={isActive ? "text-red" : "text-blue"}
+          href={`${dashboardLink}#settings`}
+          scroll={false}
+        >
+          Dashboard
+        </Link>
+        <button type="button" onClick={() => router.push("/dashboard")}>
+          RouterのDashboard
+        </button>
+        <button onClick={() => updateSorting("asc")}>Sort Ascending</button>
+        <button onClick={() => updateSorting("desc")}>Sort Descending</button>
+        <button onClick={() => switchLocale("en")}>English</button>
+        <button onClick={() => switchLocale("fr")}>French</button>
+      </>
     ))
     .exhaustive();
 
-  return (
-    <>
-      {isLoading && <Loading />}
-      <p>{data?.data?.userId ?? ""}</p>
-      {html}
-      <Link
-        className={isActive ? "text-red" : "text-blue"}
-        href={`${dashboardLink}#settings`}
-        scroll={false}
-      >
-        Dashboard
-      </Link>
-      <button type="button" onClick={() => router.push("/dashboard")}>
-        RouterのDashboard
-      </button>
-      <button onClick={() => updateSorting("asc")}>Sort Ascending</button>
-      <button onClick={() => updateSorting("desc")}>Sort Descending</button>
-      <button onClick={() => switchLocale("en")}>English</button>
-      <button onClick={() => switchLocale("fr")}>French</button>
-    </>
-  );
+  return <>{html}</>;
 }
