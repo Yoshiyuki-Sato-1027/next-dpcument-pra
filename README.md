@@ -1,3 +1,5 @@
+## Next.js、React、typeScript の勉強をするリポジトリ
+
 サーバー起動
 yarn run dev
 
