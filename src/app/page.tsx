@@ -5,7 +5,8 @@ import axios from "axios";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
+// import { Suspense } from "react";
+import { match, P } from "ts-pattern";
 import Loading from "@/app/loading";
 
 export default function Home() {
@@ -39,10 +40,28 @@ export default function Home() {
   console.log("data", data);
   // if (!isLoading) return;
 
+  type Data = { type: "text"; content: string } | { type: "img"; src: string };
+
+  type Result = { type: "ok"; data: Data } | { type: "error"; error: Error };
+
+  const result: Result = { type: "ok", data: { type: "text", content: "aa" } };
+
+  // ts-patternでjsxを表示する
+  const html = match(result)
+    // .with({ type: "error" }, () => <p>Oups! An error occured</p>)
+    .with({ type: "ok", data: { type: "text" } }, (res) => (
+      <p>{res.data.content}</p>
+    ))
+    .with({ type: "ok", data: { type: "img", src: P.select() } }, (src) => (
+      <img src={src} />
+    ))
+    .exhaustive();
+
   return (
     <>
       {isLoading && <Loading />}
       <p>{data?.data?.userId ?? ""}</p>
+      {html}
       <Link
         className={isActive ? "text-red" : "text-blue"}
         href={`${dashboardLink}#settings`}
