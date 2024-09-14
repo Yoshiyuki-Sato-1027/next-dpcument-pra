@@ -1,7 +1,16 @@
 ## Next.js、React、typeScript の勉強をするリポジトリ
 
-サーバー起動
+### サーバー起動
+
+```
 yarn run dev
+```
+
+### storybook 起動
+
+```
+yarn storybook
+```
 
 ## AppRouter のディレクトリ構成
 
