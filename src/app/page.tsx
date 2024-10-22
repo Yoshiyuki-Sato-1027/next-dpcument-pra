@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 // import { Suspense } from "react";
 import { match, P } from "ts-pattern";
 import Loading from "@/app/loading";
+import { Button } from "./components/atom/Button";
 
 export default function Home() {
   const dashboardLink = "/dashboard";
@@ -66,6 +67,7 @@ export default function Home() {
         <button onClick={() => updateSorting("desc")}>Sort Descending</button>
         <button onClick={() => switchLocale("en")}>English</button>
         <button onClick={() => switchLocale("fr")}>French</button>
+        <Button onPress={() => alert("Button pressed!")}>Press me</Button>
       </>
     ))
     .exhaustive();
